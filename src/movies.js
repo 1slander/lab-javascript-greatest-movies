@@ -57,34 +57,40 @@ function scoresAverage(moviesArray) {
  const scores = moviesArray
       .map(movie => movie.score);
 
-      if (scores.length === 0) {
-      return 0;
-    }else{
-
+      if (scores.length === 0) return 0;
+    
     const totalScore = scores.reduce((accumulator, currentValue) => { 
      if(typeof currentValue === 'string' || currentValue === undefined ){
       currentValue = 0
       return accumulator + currentValue;
      } else {
-     console.log(typeof accumulator, typeof currentValue);
      return accumulator + currentValue;
     }
    });
    
-    console.log('This is total Score', totalScore)
-
     const averageScore = totalScore / scores.length;
-     console.log('This is avg Score', averageScore)
+    
     const averageScoreRounded = Math.round(averageScore * 100) / 100;
-     console.log('This is round Score', averageScoreRounded)
+     
     return averageScoreRounded;
     }
  
-}
+
 console.log(scoresAverage(test));
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
-function dramaMoviesScore(moviesArray) {}
+function dramaMoviesScore(moviesArray) {
+ const dramaMovies = moviesArray.filter(movie =>movie.genre.includes("Drama"));
+ 
+ if(!dramaMovies.length)return 0;
+ const dramaScore = dramaMovies.map(movie => movie.score)
+ const dramaScoreTotal = dramaScore.reduce((acc,curr) => acc + curr);
+ const avgDramaScore = dramaScoreTotal / dramaMovies.length;
+ const avgDramaRound = Math.round(avgDramaScore*100)/100;
+ 
+ return avgDramaRound;
+}
+console.log(dramaMoviesScore(test))
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(moviesArray) {}
