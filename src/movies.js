@@ -4,6 +4,9 @@
 function getAllDirectors(moviesArray) {
  const allDirectors = moviesArray.map((movie)=>
    movie.director);
+   
+   const removeDuplicate = allDirectors.filter((director,index)=>allDirectors.indexOf(director)===index)
+   
  return allDirectors;
 }
 
@@ -83,6 +86,7 @@ function dramaMoviesScore(moviesArray) {
  const dramaMovies = moviesArray.filter(movie =>movie.genre.includes("Drama"));
  
  if(!dramaMovies.length)return 0;
+
  const dramaScore = dramaMovies.map(movie => movie.score)
  const dramaScoreTotal = dramaScore.reduce((acc,curr) => acc + curr);
  const avgDramaScore = dramaScoreTotal / dramaMovies.length;
