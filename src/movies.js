@@ -119,9 +119,13 @@ console.log(orderAlphabetically(moviesData))
 function turnHoursToMinutes(moviesArray) {
   const newArr = JSON.parse(JSON.stringify(moviesArray));
   const calcDuration = function (time){
+    // save paramater in variable
   const duration = time;
+  // remove letters
   const removeLetters=duration.replace(/[a-z]/gi, "");
+  //transform into an array
   const durationArr = removeLetters.split(" ");
+  // operation and transform to number
   const hoursToMin = Number(durationArr[0]*60) + +durationArr[1];
   return hoursToMin;
   }
