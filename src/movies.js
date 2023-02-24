@@ -120,13 +120,18 @@ function turnHoursToMinutes(moviesArray) {
   const newArr = JSON.parse(JSON.stringify(moviesArray));
   const calcDuration = function (time){
     // save paramater in variable
+  let hoursToMin;
   const duration = time;
   // remove letters
   const removeLetters=duration.replace(/[a-z]/gi, "");
   //transform into an array
   const durationArr = removeLetters.split(" ");
   // operation and transform to number
-  const hoursToMin = Number(durationArr[0]*60) + +durationArr[1];
+  if(durationArr.length === 1){
+    hoursToMin = Number(durationArr[0]*60);
+  } else {
+    hoursToMin = Number(durationArr[0]*60) + +durationArr[1];}
+
   return hoursToMin;
   }
 
